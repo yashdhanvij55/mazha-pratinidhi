@@ -1,0 +1,121 @@
+{
+  "cm": {
+    "name": "देवेंद्र फडणवीस",
+    "name_en": "Devendra Fadnavis",
+    "party": "BJP",
+    "since": "Dec 2024"
+  },
+
+  "pincodes": {
+    "421503": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "बदलापूर",
+      "area_en": "Badlapur",
+      "mla": {
+        "name": "किसन कथोरे",
+        "name_en": "Kisan Kathore",
+        "constituency": "अंबरनाथ",
+        "constituency_en": "Ambarnath",
+        "party": "BJP",
+        "attendance": 88,
+        "questions_asked": 47,
+        "elected_since": 2019
+      },
+      "mp": {
+        "name": "श्रीकांत शिंदे",
+        "name_en": "Shrikant Shinde",
+        "constituency": "कल्याण",
+        "constituency_en": "Kalyan",
+        "party": "SS",
+        "attendance": 71,
+        "questions_asked": 112,
+        "elected_since": 2014
+      },
+      "collector": {
+        "name": "अशोक शिंगारे",
+        "name_en": "Ashok Shingare",
+        "title": "IAS"
+      },
+      "sp": {
+        "name": "विवेक पानसरे",
+        "name_en": "Vivek Pansare",
+        "title": "IPS"
+      }
+    },
+
+    "400601": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "ठाणे शहर",
+      "area_en": "Thane City",
+      "mla": {
+        "name": "प्रताप सरनाईक",
+        "name_en": "Pratap Sarnaik",
+        "constituency": "ओवळा-माजिवडा",
+        "constituency_en": "Ovala-Majiwada",
+        "party": "SS",
+        "attendance": 76,
+        "questions_asked": 35,
+        "elected_since": 2014
+      },
+      "mp": {
+        "name": "नरेश म्हस्के",
+        "name_en": "Naresh Mhaske",
+        "constituency": "ठाणे",
+        "constituency_en": "Thane",
+        "party": "SS",
+        "attendance": 68,
+        "questions_asked": 54,
+        "elected_since": 2024
+      },
+      "collector": {
+        "name": "अशोक शिंगारे",
+        "name_en": "Ashok Shingare",
+        "title": "IAS"
+      },
+      "sp": {
+        "name": "विवेक पानसरे",
+        "name_en": "Vivek Pansare",
+        "title": "IPS"
+      }
+    },
+
+    "421201": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "कल्याण",
+      "area_en": "Kalyan",
+      "mla": {
+        "name": "गणपत गायकवाड",
+        "name_en": "Ganpat Gaikwad",
+        "constituency": "कल्याण पूर्व",
+        "constituency_en": "Kalyan East",
+        "party": "SS",
+        "attendance": 64,
+        "questions_asked": 22,
+        "elected_since": 2009
+      },
+      "mp": {
+        "name": "श्रीकांत शिंदे",
+        "name_en": "Shrikant Shinde",
+        "constituency": "कल्याण",
+        "constituency_en": "Kalyan",
+        "party": "SS",
+        "attendance": 71,
+        "questions_asked": 112,
+        "elected_since": 2014
+      },
+      "collector": {
+        "name": "अशोक शिंगारे",
+        "name_en": "Ashok Shingare",
+        "title": "IAS"
+      },
+      "sp": {
+        "name": "विवेक पानसरे",
+        "name_en": "Vivek Pansare",
+        "title": "IPS"
+      }
+    }
+  }
+}

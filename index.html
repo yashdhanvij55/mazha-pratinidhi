@@ -45,21 +45,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
     padding: 40px 20px;
+  }
+
+  .hero-text {
+    text-align: center;
+    margin-bottom: 32px;
   }
 
   h1 {
     font-family: 'Tiro Devanagari Marathi', serif;
-    font-size: clamp(32px, 7vw, 56px);
+    font-size: clamp(28px, 6vw, 48px);
     margin-bottom: 8px;
   }
 
   .subtitle {
     color: rgba(255,255,255,0.5);
-    margin-bottom: 40px;
     max-width: 380px;
+    margin: 0 auto;
   }
 
   .search-box {
@@ -97,9 +100,7 @@
     outline: none;
   }
 
-  input::placeholder {
-    color: rgba(255,255,255,0.25);
-  }
+  input::placeholder { color: rgba(255,255,255,0.25); }
 
   button {
     background: #E8521A;
@@ -112,10 +113,72 @@
   }
 
   .status {
-    margin-top: 16px;
+    margin-top: 14px;
     font-size: 13px;
     color: rgba(255,255,255,0.4);
     min-height: 18px;
+    text-align: left;
+  }
+
+  .try-hint {
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    text-align: left;
+  }
+
+  .try-hint b { color: rgba(255,255,255,0.5); cursor: pointer; }
+
+  #results {
+    width: 100%;
+    max-width: 420px;
+    margin-top: 24px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 16px;
+  }
+
+  .card-role {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #F2784B;
+    margin-bottom: 4px;
+  }
+
+  .card-name { font-size: 18px; font-weight: 700; }
+
+  .card-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 2px;
+  }
+
+  .card-stats {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .stat { text-align: center; flex: 1; }
+  .stat-val { font-size: 18px; font-weight: 700; }
+  .stat-label { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+  .source-note {
+    font-size: 10px;
+    color: rgba(255,255,255,0.25);
+    text-align: center;
+    margin-top: 4px;
   }
 
   footer {
@@ -136,32 +199,105 @@
 </nav>
 
 <main>
-  <h1>तुमचा प्रतिनिधी कोण आहे?</h1>
-  <p class="subtitle">Who represents you in Maharashtra? Enter your pincode to find out.</p>
+  <div class="hero-text">
+    <h1>तुमचा प्रतिनिधी कोण आहे?</h1>
+    <p class="subtitle">Who represents you in Maharashtra? Enter your pincode to find out.</p>
+  </div>
 
   <div class="search-box">
     <div class="search-label">तुमचा पिनकोड टाका · Enter your pincode</div>
     <div class="search-row">
-      <input type="text" id="pincode" placeholder="411 001" maxlength="6">
+      <input type="text" id="pincode" placeholder="421503" maxlength="6">
       <button onclick="searchPincode()">शोधा</button>
     </div>
     <div class="status" id="status"></div>
+    <div class="try-hint">Try: <b onclick="tryPin('421503')">421503</b> · <b onclick="tryPin('400601')">400601</b> · <b onclick="tryPin('421201')">421201</b> (Thane district sample data)</div>
   </div>
+
+  <div id="results"></div>
 </main>
 
-<footer>माझा प्रतिनिधी · Phase 1 Prototype · Built with public data</footer>
+<footer>माझा प्रतिनिधी · Phase 1 Prototype · Sample data — Thane district only</footer>
 
 <script>
+  let DATA = null;
+
+  fetch('data.json')
+    .then(res => res.json())
+    .then(json => { DATA = json; })
+    .catch(err => {
+      document.getElementById('status').textContent = "डेटा लोड करण्यात अडचण · Error loading data";
+    });
+
+  function tryPin(pin) {
+    document.getElementById('pincode').value = pin;
+    searchPincode();
+  }
+
   function searchPincode() {
     const pin = document.getElementById('pincode').value.trim();
     const status = document.getElementById('status');
+    const results = document.getElementById('results');
 
     if (pin.length !== 6 || isNaN(pin)) {
       status.textContent = "कृपया योग्य 6 अंकी पिनकोड टाका · Please enter a valid 6-digit pincode";
+      results.style.display = 'none';
       return;
     }
 
-    status.textContent = "लवकरच येत आहे... · Coming soon — this is where results will appear!";
+    if (!DATA) {
+      status.textContent = "डेटा अजून लोड होत आहे... · Data still loading, try again in a second";
+      return;
+    }
+
+    const entry = DATA.pincodes[pin];
+
+    if (!entry) {
+      status.textContent = "सध्या फक्त ठाणे जिल्ह्याचा डेटा उपलब्ध आहे · Currently only Thane district data is available";
+      results.style.display = 'none';
+      return;
+    }
+
+    status.textContent = `📍 ${entry.area} · ${entry.area_en}, ${entry.district_en}`;
+
+    results.innerHTML = `
+      <div class="card">
+        <div class="card-role">मुख्यमंत्री · Chief Minister</div>
+        <div class="card-name">${DATA.cm.name}</div>
+        <div class="card-sub">${DATA.cm.name_en} · ${DATA.cm.party} · Since ${DATA.cm.since}</div>
+      </div>
+
+      <div class="card">
+        <div class="card-role">आमदार · MLA</div>
+        <div class="card-name">${entry.mla.name}</div>
+        <div class="card-sub">${entry.mla.name_en} · ${entry.mla.constituency_en} · ${entry.mla.party}</div>
+        <div class="card-stats">
+          <div class="stat"><div class="stat-val">${entry.mla.attendance}%</div><div class="stat-label">उपस्थिती · Attendance</div></div>
+          <div class="stat"><div class="stat-val">${entry.mla.questions_asked}</div><div class="stat-label">प्रश्न · Questions</div></div>
+          <div class="stat"><div class="stat-val">${entry.mla.elected_since}</div><div class="stat-label">पासून · Since</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-role">खासदार · MP</div>
+        <div class="card-name">${entry.mp.name}</div>
+        <div class="card-sub">${entry.mp.name_en} · ${entry.mp.constituency_en} · ${entry.mp.party}</div>
+        <div class="card-stats">
+          <div class="stat"><div class="stat-val">${entry.mp.attendance}%</div><div class="stat-label">उपस्थिती · Attendance</div></div>
+          <div class="stat"><div class="stat-val">${entry.mp.questions_asked}</div><div class="stat-label">प्रश्न · Questions</div></div>
+          <div class="stat"><div class="stat-val">${entry.mp.elected_since}</div><div class="stat-label">पासून · Since</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-role">जिल्हा अधिकारी · District Officials</div>
+        <div class="card-sub" style="margin-top:8px;"><b style="color:#fff;">जिल्हाधिकारी:</b> ${entry.collector.name} (${entry.collector.title})</div>
+        <div class="card-sub" style="margin-top:4px;"><b style="color:#fff;">पोलीस अधीक्षक:</b> ${entry.sp.name} (${entry.sp.title})</div>
+      </div>
+
+      <div class="source-note">Sample data for prototype testing — not yet verified against live sources</div>
+    `;
+    results.style.display = 'flex';
   }
 </script>
 
