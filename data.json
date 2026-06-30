@@ -5,117 +5,462 @@
     "party": "BJP",
     "since": "Dec 2024"
   },
-
   "pincodes": {
+    "400601": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "ठाणे शहर (नौपाडा)",
+      "area_en": "Thane City (Naupada)",
+      "mla": {
+        "name": "Sanjay Mukund Kelkar",
+        "name_en": "Sanjay Mukund Kelkar",
+        "constituency": "Thane",
+        "constituency_en": "Thane",
+        "party": "BJP",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "400602": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "कोपरी / पाचपाखाडी",
+      "area_en": "Kopri / Panchpakhadi",
+      "mla": {
+        "name": "Eknath Sambhaji Shinde",
+        "name_en": "Eknath Sambhaji Shinde",
+        "constituency": "Kopri - Pachpakhadi",
+        "constituency_en": "Kopri - Pachpakhadi",
+        "party": "SS",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "400606": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "ठाणे पूर्व",
+      "area_en": "Thane East",
+      "mla": {
+        "name": "Eknath Sambhaji Shinde",
+        "name_en": "Eknath Sambhaji Shinde",
+        "constituency": "Kopri - Pachpakhadi",
+        "constituency_en": "Kopri - Pachpakhadi",
+        "party": "SS",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "400610": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "कळवा",
+      "area_en": "Kalwa",
+      "mla": {
+        "name": "Jitendra Satish Awhad",
+        "name_en": "Jitendra Satish Awhad",
+        "constituency": "Mumbra - Kalwa",
+        "constituency_en": "Mumbra - Kalwa",
+        "party": "NCP (SP)",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "400612": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "मुंब्रा",
+      "area_en": "Mumbra",
+      "mla": {
+        "name": "Jitendra Satish Awhad",
+        "name_en": "Jitendra Satish Awhad",
+        "constituency": "Mumbra - Kalwa",
+        "constituency_en": "Mumbra - Kalwa",
+        "party": "NCP (SP)",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "400607": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "माजिवडा / ठाणे पश्चिम",
+      "area_en": "Majiwada / Thane West",
+      "mla": {
+        "name": "Pratap Baburao Sarnaik",
+        "name_en": "Pratap Baburao Sarnaik",
+        "constituency": "Ovala - Majiwada",
+        "constituency_en": "Ovala - Majiwada",
+        "party": "SS",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "400615": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "ओवळे / हिरानंदानी इस्टेट",
+      "area_en": "Owale / Hiranandani Estate",
+      "mla": {
+        "name": "Pratap Baburao Sarnaik",
+        "name_en": "Pratap Baburao Sarnaik",
+        "constituency": "Ovala - Majiwada",
+        "constituency_en": "Ovala - Majiwada",
+        "party": "SS",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "421301": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "कल्याण पश्चिम",
+      "area_en": "Kalyan West",
+      "mla": {
+        "name": "Vishwanath Atmaram Bhoir",
+        "name_en": "Vishwanath Atmaram Bhoir",
+        "constituency": "Kalyan West",
+        "constituency_en": "Kalyan West",
+        "party": "SS",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "421306": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "कल्याण पूर्व",
+      "area_en": "Kalyan East",
+      "mla": {
+        "name": "Sulbha Ganpat Gaikwad",
+        "name_en": "Sulbha Ganpat Gaikwad",
+        "constituency": "Kalyan East",
+        "constituency_en": "Kalyan East",
+        "party": "BJP",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "421304": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "टिटवाळा",
+      "area_en": "Titwala",
+      "mla": {
+        "name": "Rajesh Govardhan More",
+        "name_en": "Rajesh Govardhan More",
+        "constituency": "Kalyan Rural",
+        "constituency_en": "Kalyan Rural",
+        "party": "SS",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "421204": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "मोहने",
+      "area_en": "Mohone",
+      "mla": {
+        "name": "Rajesh Govardhan More",
+        "name_en": "Rajesh Govardhan More",
+        "constituency": "Kalyan Rural",
+        "constituency_en": "Kalyan Rural",
+        "party": "SS",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "421201": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "डोंबिवली पूर्व",
+      "area_en": "Dombivli East",
+      "mla": {
+        "name": "Sulbha Ganpat Gaikwad",
+        "name_en": "Sulbha Ganpat Gaikwad",
+        "constituency": "Kalyan East",
+        "constituency_en": "Kalyan East",
+        "party": "BJP",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "421202": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "डोंबिवली पश्चिम",
+      "area_en": "Dombivli West",
+      "mla": {
+        "name": "Sulbha Ganpat Gaikwad",
+        "name_en": "Sulbha Ganpat Gaikwad",
+        "constituency": "Kalyan East",
+        "constituency_en": "Kalyan East",
+        "party": "BJP",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "421501": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "अंबरनाथ पश्चिम",
+      "area_en": "Ambernath West",
+      "mla": {
+        "name": "Balaji Pralhad Kinikar",
+        "name_en": "Balaji Pralhad Kinikar",
+        "constituency": "Ambernath",
+        "constituency_en": "Ambernath",
+        "party": "SS",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "421502": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "अंबरनाथ पूर्व",
+      "area_en": "Ambernath East",
+      "mla": {
+        "name": "Balaji Pralhad Kinikar",
+        "name_en": "Balaji Pralhad Kinikar",
+        "constituency": "Ambernath",
+        "constituency_en": "Ambernath",
+        "party": "SS",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
     "421503": {
       "district": "ठाणे",
       "district_en": "Thane",
       "area": "बदलापूर",
       "area_en": "Badlapur",
       "mla": {
-        "name": "किसन कथोरे",
-        "name_en": "Kisan Kathore",
-        "constituency": "अंबरनाथ",
-        "constituency_en": "Ambarnath",
+        "name": "Balaji Pralhad Kinikar",
+        "name_en": "Balaji Pralhad Kinikar",
+        "constituency": "Ambernath",
+        "constituency_en": "Ambernath",
+        "party": "SS",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "421001": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "उल्हासनगर",
+      "area_en": "Ulhasnagar",
+      "mla": {
+        "name": "Kumar Uttamchand Ailani",
+        "name_en": "Kumar Uttamchand Ailani",
+        "constituency": "Ulhasnagar",
+        "constituency_en": "Ulhasnagar",
         "party": "BJP",
-        "attendance": 88,
-        "questions_asked": 47,
-        "elected_since": 2019
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
       },
-      "mp": {
-        "name": "श्रीकांत शिंदे",
-        "name_en": "Shrikant Shinde",
-        "constituency": "कल्याण",
-        "constituency_en": "Kalyan",
-        "party": "SS",
-        "attendance": 71,
-        "questions_asked": 112,
-        "elected_since": 2014
-      },
-      "collector": {
-        "name": "अशोक शिंगारे",
-        "name_en": "Ashok Shingare",
-        "title": "IAS"
-      },
-      "sp": {
-        "name": "विवेक पानसरे",
-        "name_en": "Vivek Pansare",
-        "title": "IPS"
-      }
+      "mp": {},
+      "collector": {},
+      "sp": {}
     },
-
-    "400601": {
+    "421401": {
       "district": "ठाणे",
       "district_en": "Thane",
-      "area": "ठाणे शहर",
-      "area_en": "Thane City",
+      "area": "मुरबाड",
+      "area_en": "Murbad",
       "mla": {
-        "name": "प्रताप सरनाईक",
-        "name_en": "Pratap Sarnaik",
-        "constituency": "ओवळा-माजिवडा",
-        "constituency_en": "Ovala-Majiwada",
-        "party": "SS",
-        "attendance": 76,
-        "questions_asked": 35,
-        "elected_since": 2014
+        "name": "Kisan Shankar Kathore",
+        "name_en": "Kisan Shankar Kathore",
+        "constituency": "Murbad",
+        "constituency_en": "Murbad",
+        "party": "BJP",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
       },
-      "mp": {
-        "name": "नरेश म्हस्के",
-        "name_en": "Naresh Mhaske",
-        "constituency": "ठाणे",
-        "constituency_en": "Thane",
-        "party": "SS",
-        "attendance": 68,
-        "questions_asked": 54,
-        "elected_since": 2024
-      },
-      "collector": {
-        "name": "अशोक शिंगारे",
-        "name_en": "Ashok Shingare",
-        "title": "IAS"
-      },
-      "sp": {
-        "name": "विवेक पानसरे",
-        "name_en": "Vivek Pansare",
-        "title": "IPS"
-      }
+      "mp": {},
+      "collector": {},
+      "sp": {}
     },
-
-    "421201": {
+    "421302": {
       "district": "ठाणे",
       "district_en": "Thane",
-      "area": "कल्याण",
-      "area_en": "Kalyan",
+      "area": "भिवंडी",
+      "area_en": "Bhiwandi",
       "mla": {
-        "name": "गणपत गायकवाड",
-        "name_en": "Ganpat Gaikwad",
-        "constituency": "कल्याण पूर्व",
-        "constituency_en": "Kalyan East",
+        "name": "Rais Kasam Shaikh",
+        "name_en": "Rais Kasam Shaikh",
+        "constituency": "Bhiwandi East",
+        "constituency_en": "Bhiwandi East",
+        "party": "SP",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "421305": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "भिवंडी पश्चिम",
+      "area_en": "Bhiwandi West",
+      "mla": {
+        "name": "Mahesh Prabhakar Choughule",
+        "name_en": "Mahesh Prabhakar Choughule",
+        "constituency": "Bhiwandi West",
+        "constituency_en": "Bhiwandi West",
+        "party": "BJP",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "421308": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "पडघा",
+      "area_en": "Padgha",
+      "mla": {
+        "name": "Shantaram Tukaram More",
+        "name_en": "Shantaram Tukaram More",
+        "constituency": "Bhiwandi Rural",
+        "constituency_en": "Bhiwandi Rural",
         "party": "SS",
-        "attendance": 64,
-        "questions_asked": 22,
-        "elected_since": 2009
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
       },
-      "mp": {
-        "name": "श्रीकांत शिंदे",
-        "name_en": "Shrikant Shinde",
-        "constituency": "कल्याण",
-        "constituency_en": "Kalyan",
-        "party": "SS",
-        "attendance": 71,
-        "questions_asked": 112,
-        "elected_since": 2014
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "421601": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "शहापूर",
+      "area_en": "Shahapur",
+      "mla": {
+        "name": "Daulat Bhika Daroda",
+        "name_en": "Daulat Bhika Daroda",
+        "constituency": "Shahapur",
+        "constituency_en": "Shahapur",
+        "party": "NCP",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
       },
-      "collector": {
-        "name": "अशोक शिंगारे",
-        "name_en": "Ashok Shingare",
-        "title": "IAS"
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "401101": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "मिरा रोड",
+      "area_en": "Mira Road",
+      "mla": {
+        "name": "Narendra Mehta",
+        "name_en": "Narendra Mehta",
+        "constituency": "Mira Bhayandar",
+        "constituency_en": "Mira Bhayandar",
+        "party": "BJP",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
       },
-      "sp": {
-        "name": "विवेक पानसरे",
-        "name_en": "Vivek Pansare",
-        "title": "IPS"
-      }
+      "mp": {},
+      "collector": {},
+      "sp": {}
+    },
+    "401105": {
+      "district": "ठाणे",
+      "district_en": "Thane",
+      "area": "भाईंदर",
+      "area_en": "Bhayandar",
+      "mla": {
+        "name": "Narendra Mehta",
+        "name_en": "Narendra Mehta",
+        "constituency": "Mira Bhayandar",
+        "constituency_en": "Mira Bhayandar",
+        "party": "BJP",
+        "attendance": null,
+        "questions_asked": null,
+        "elected_since": "2024"
+      },
+      "mp": {},
+      "collector": {},
+      "sp": {}
     }
   }
 }
