@@ -26,10 +26,7 @@
     border-bottom: 1px solid rgba(255,255,255,0.08);
   }
 
-  .logo {
-    font-family: 'Tiro Devanagari Marathi', serif;
-    font-size: 20px;
-  }
+  .logo { font-family: 'Tiro Devanagari Marathi', serif; font-size: 20px; }
 
   .logo span {
     display: block;
@@ -48,10 +45,7 @@
     padding: 40px 20px;
   }
 
-  .hero-text {
-    text-align: center;
-    margin-bottom: 32px;
-  }
+  .hero-text { text-align: center; margin-bottom: 32px; }
 
   h1 {
     font-family: 'Tiro Devanagari Marathi', serif;
@@ -59,11 +53,7 @@
     margin-bottom: 8px;
   }
 
-  .subtitle {
-    color: rgba(255,255,255,0.5);
-    max-width: 380px;
-    margin: 0 auto;
-  }
+  .subtitle { color: rgba(255,255,255,0.5); max-width: 380px; margin: 0 auto; }
 
   .search-box {
     background: rgba(255,255,255,0.06);
@@ -84,10 +74,7 @@
     text-align: left;
   }
 
-  .search-row {
-    display: flex;
-    gap: 10px;
-  }
+  .search-row { display: flex; gap: 10px; }
 
   input {
     flex: 1;
@@ -122,12 +109,13 @@
 
   .try-hint {
     margin-top: 16px;
-    font-size: 12px;
+    font-size: 11px;
     color: rgba(255,255,255,0.3);
     text-align: left;
+    line-height: 1.8;
   }
 
-  .try-hint b { color: rgba(255,255,255,0.5); cursor: pointer; }
+  .try-hint b { color: rgba(255,255,255,0.55); cursor: pointer; }
 
   #results {
     width: 100%;
@@ -172,7 +160,15 @@
 
   .stat { text-align: center; flex: 1; }
   .stat-val { font-size: 18px; font-weight: 700; }
+  .stat-val.muted { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.3); }
   .stat-label { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+  .coming-soon {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    font-style: italic;
+    margin-top: 8px;
+  }
 
   .source-note {
     font-size: 10px;
@@ -207,17 +203,22 @@
   <div class="search-box">
     <div class="search-label">तुमचा पिनकोड टाका · Enter your pincode</div>
     <div class="search-row">
-      <input type="text" id="pincode" placeholder="421503" maxlength="6">
+      <input type="text" id="pincode" placeholder="400601" maxlength="6">
       <button onclick="searchPincode()">शोधा</button>
     </div>
     <div class="status" id="status"></div>
-    <div class="try-hint">Try: <b onclick="tryPin('421503')">421503</b> · <b onclick="tryPin('400601')">400601</b> · <b onclick="tryPin('421201')">421201</b> (Thane district sample data)</div>
+    <div class="try-hint">
+      Thane · 400601, 400602, 400610<br>
+      Kalyan-Dombivli · 421201, 421202, 421301<br>
+      Ambernath-Badlapur · 421501, 421503<br>
+      Bhiwandi-Mira Road · 421302, 401101
+    </div>
   </div>
 
   <div id="results"></div>
 </main>
 
-<footer>माझा प्रतिनिधी · Phase 1 Prototype · Sample data — Thane district only</footer>
+<footer>माझा प्रतिनिधी · Phase 1 Prototype · MLA data from PRS India · Thane district only</footer>
 
 <script>
   let DATA = null;
@@ -228,11 +229,6 @@
     .catch(err => {
       document.getElementById('status').textContent = "डेटा लोड करण्यात अडचण · Error loading data";
     });
-
-  function tryPin(pin) {
-    document.getElementById('pincode').value = pin;
-    searchPincode();
-  }
 
   function searchPincode() {
     const pin = document.getElementById('pincode').value.trim();
@@ -253,14 +249,23 @@
     const entry = DATA.pincodes[pin];
 
     if (!entry) {
-      status.textContent = "सध्या फक्त ठाणे जिल्ह्याचा डेटा उपलब्ध आहे · Currently only Thane district data is available";
+      status.textContent = "सध्या फक्त ठाणे जिल्ह्याचा डेटा उपलब्ध आहे · Currently only Thane district data is available (try one of the sample pincodes below)";
       results.style.display = 'none';
       return;
     }
 
     status.textContent = `📍 ${entry.area} · ${entry.area_en}, ${entry.district_en}`;
 
-    results.innerHTML = `
+    const mla = entry.mla;
+    const attendanceDisplay = mla.attendance
+      ? `<div class="stat"><div class="stat-val">${mla.attendance}%</div><div class="stat-label">उपस्थिती · Attendance</div></div>`
+      : `<div class="stat"><div class="stat-val muted">—</div><div class="stat-label">उपस्थिती · Attendance</div></div>`;
+
+    const questionsDisplay = mla.questions_asked
+      ? `<div class="stat"><div class="stat-val">${mla.questions_asked}</div><div class="stat-label">प्रश्न · Questions</div></div>`
+      : `<div class="stat"><div class="stat-val muted">—</div><div class="stat-label">प्रश्न · Questions</div></div>`;
+
+    let html = `
       <div class="card">
         <div class="card-role">मुख्यमंत्री · Chief Minister</div>
         <div class="card-name">${DATA.cm.name}</div>
@@ -269,34 +274,54 @@
 
       <div class="card">
         <div class="card-role">आमदार · MLA</div>
-        <div class="card-name">${entry.mla.name}</div>
-        <div class="card-sub">${entry.mla.name_en} · ${entry.mla.constituency_en} · ${entry.mla.party}</div>
+        <div class="card-name">${mla.name_en}</div>
+        <div class="card-sub">${mla.constituency_en} constituency · ${mla.party}</div>
         <div class="card-stats">
-          <div class="stat"><div class="stat-val">${entry.mla.attendance}%</div><div class="stat-label">उपस्थिती · Attendance</div></div>
-          <div class="stat"><div class="stat-val">${entry.mla.questions_asked}</div><div class="stat-label">प्रश्न · Questions</div></div>
-          <div class="stat"><div class="stat-val">${entry.mla.elected_since}</div><div class="stat-label">पासून · Since</div></div>
+          ${attendanceDisplay}
+          ${questionsDisplay}
+          <div class="stat"><div class="stat-val">${mla.elected_since}</div><div class="stat-label">पासून · Since</div></div>
         </div>
+        ${(!mla.attendance) ? '<div class="coming-soon">Attendance data will appear once PRS publishes 15th Assembly session records</div>' : ''}
       </div>
-
-      <div class="card">
-        <div class="card-role">खासदार · MP</div>
-        <div class="card-name">${entry.mp.name}</div>
-        <div class="card-sub">${entry.mp.name_en} · ${entry.mp.constituency_en} · ${entry.mp.party}</div>
-        <div class="card-stats">
-          <div class="stat"><div class="stat-val">${entry.mp.attendance}%</div><div class="stat-label">उपस्थिती · Attendance</div></div>
-          <div class="stat"><div class="stat-val">${entry.mp.questions_asked}</div><div class="stat-label">प्रश्न · Questions</div></div>
-          <div class="stat"><div class="stat-val">${entry.mp.elected_since}</div><div class="stat-label">पासून · Since</div></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-role">जिल्हा अधिकारी · District Officials</div>
-        <div class="card-sub" style="margin-top:8px;"><b style="color:#fff;">जिल्हाधिकारी:</b> ${entry.collector.name} (${entry.collector.title})</div>
-        <div class="card-sub" style="margin-top:4px;"><b style="color:#fff;">पोलीस अधीक्षक:</b> ${entry.sp.name} (${entry.sp.title})</div>
-      </div>
-
-      <div class="source-note">Sample data for prototype testing — not yet verified against live sources</div>
     `;
+
+    if (entry.mp && entry.mp.name_en) {
+      html += `
+        <div class="card">
+          <div class="card-role">खासदार · MP</div>
+          <div class="card-name">${entry.mp.name_en}</div>
+          <div class="card-sub">${entry.mp.constituency_en} · ${entry.mp.party}</div>
+        </div>
+      `;
+    } else {
+      html += `
+        <div class="card">
+          <div class="card-role">खासदार · MP</div>
+          <div class="coming-soon">लवकरच येत आहे · Coming soon</div>
+        </div>
+      `;
+    }
+
+    if (entry.collector && entry.collector.name_en) {
+      html += `
+        <div class="card">
+          <div class="card-role">जिल्हा अधिकारी · District Officials</div>
+          <div class="card-sub" style="margin-top:8px;"><b style="color:#fff;">जिल्हाधिकारी:</b> ${entry.collector.name_en} (${entry.collector.title})</div>
+          ${entry.sp && entry.sp.name_en ? `<div class="card-sub" style="margin-top:4px;"><b style="color:#fff;">पोलीस अधीक्षक:</b> ${entry.sp.name_en} (${entry.sp.title})</div>` : ''}
+        </div>
+      `;
+    } else {
+      html += `
+        <div class="card">
+          <div class="card-role">जिल्हा अधिकारी · District Officials</div>
+          <div class="coming-soon">लवकरच येत आहे · Coming soon</div>
+        </div>
+      `;
+    }
+
+    html += `<div class="source-note">MLA data: PRS India (prsindia.org) · Prototype — verify before sharing widely</div>`;
+
+    results.innerHTML = html;
     results.style.display = 'flex';
   }
 </script>

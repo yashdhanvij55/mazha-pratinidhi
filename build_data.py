@@ -29,10 +29,51 @@ OUTPUT_FILE = "data.json"
 # This is the piece that needs the most manual care -- pincode boundaries
 # don't perfectly match constituency boundaries. Start small, expand carefully.
 PINCODE_TO_CONSTITUENCY = {
-    "421503": {"constituency": "Murbad", "area": "Badlapur", "area_mr": "बदलापूर"},
-    "400601": {"constituency": "Ovala - Majiwada", "area": "Thane City", "area_mr": "ठाणे शहर"},
-    "421201": {"constituency": "Kalyan East", "area": "Kalyan", "area_mr": "कल्याण"},
+    # Thane City / Kopri-Pachpakhadi
+    "400601": {"constituency": "Thane", "area": "Thane City (Naupada)", "area_mr": "ठाणे शहर (नौपाडा)"},
+    "400602": {"constituency": "Kopri - Pachpakhadi", "area": "Kopri / Panchpakhadi", "area_mr": "कोपरी / पाचपाखाडी"},
+    "400606": {"constituency": "Kopri - Pachpakhadi", "area": "Thane East", "area_mr": "ठाणे पूर्व"},
+    "400610": {"constituency": "Mumbra - Kalwa", "area": "Kalwa", "area_mr": "कळवा"},
+    "400612": {"constituency": "Mumbra - Kalwa", "area": "Mumbra", "area_mr": "मुंब्रा"},
+
+    # Ovala-Majiwada
+    "400607": {"constituency": "Ovala - Majiwada", "area": "Majiwada / Thane West", "area_mr": "माजिवडा / ठाणे पश्चिम"},
+    "400615": {"constituency": "Ovala - Majiwada", "area": "Owale / Hiranandani Estate", "area_mr": "ओवळे / हिरानंदानी इस्टेट"},
+
+    # Kalyan cluster
+    "421301": {"constituency": "Kalyan West", "area": "Kalyan West", "area_mr": "कल्याण पश्चिम"},
+    "421306": {"constituency": "Kalyan East", "area": "Kalyan East", "area_mr": "कल्याण पूर्व"},
+    "421304": {"constituency": "Kalyan Rural", "area": "Titwala", "area_mr": "टिटवाळा"},
+    "421204": {"constituency": "Kalyan Rural", "area": "Mohone", "area_mr": "मोहने"},
+
+    # Dombivli (separate pincodes from Kalyan)
+    "421201": {"constituency": "Kalyan East", "area": "Dombivli East", "area_mr": "डोंबिवली पूर्व"},
+    "421202": {"constituency": "Kalyan East", "area": "Dombivli West", "area_mr": "डोंबिवली पश्चिम"},
+
+    # Ambernath / Ulhasnagar / Badlapur / Murbad
+    "421501": {"constituency": "Ambernath", "area": "Ambernath West", "area_mr": "अंबरनाथ पश्चिम"},
+    "421502": {"constituency": "Ambernath", "area": "Ambernath East", "area_mr": "अंबरनाथ पूर्व"},
+    "421503": {"constituency": "Ambernath", "area": "Badlapur", "area_mr": "बदलापूर"},
+    "421001": {"constituency": "Ulhasnagar", "area": "Ulhasnagar", "area_mr": "उल्हासनगर"},
+    "421401": {"constituency": "Murbad", "area": "Murbad", "area_mr": "मुरबाड"},
+
+    # Bhiwandi cluster
+    "421302": {"constituency": "Bhiwandi East", "area": "Bhiwandi", "area_mr": "भिवंडी"},
+    "421305": {"constituency": "Bhiwandi West", "area": "Bhiwandi West", "area_mr": "भिवंडी पश्चिम"},
+    "421308": {"constituency": "Bhiwandi Rural", "area": "Padgha", "area_mr": "पडघा"},
+
+    # Shahapur / Mira-Bhayandar
+    "421601": {"constituency": "Shahapur", "area": "Shahapur", "area_mr": "शहापूर"},
+    "401101": {"constituency": "Mira Bhayandar", "area": "Mira Road", "area_mr": "मिरा रोड"},
+    "401105": {"constituency": "Mira Bhayandar", "area": "Bhayandar", "area_mr": "भाईंदर"},
 }
+
+# NOTE ON ACCURACY: Pincode-to-constituency boundaries don't align perfectly
+# with postal boundaries -- some pincodes above are best-effort based on the
+# dominant constituency for that area's main town. Before public launch, each
+# entry should be spot-checked (e.g. against voter ID / Form 26 constituency
+# lookup on the CEO Maharashtra site) especially for areas that straddle two
+# constituencies. Treat this list as a strong first draft, not final truth.
 
 # Party short codes for display (PRS gives full names, we want short tags)
 PARTY_SHORT = {
@@ -47,23 +88,14 @@ PARTY_SHORT = {
 
 # MP and district official data -- not available in the PRS MLA CSV.
 # Filled in manually after separate verification (sansad.in, state sites).
-# IMPORTANT: Replace placeholder fields below with verified facts before publishing.
+# Every pincode below still needs real MP + Collector + SP data confirmed.
+# Until filled in, the site will just show "Coming soon" for these fields.
 MANUAL_MP_AND_OFFICIALS = {
-    "421503": {
-        "mp": {"name_en": "VERIFY", "constituency_en": "Kalyan", "party": "VERIFY"},
-        "collector": {"name_en": "VERIFY", "title": "IAS"},
-        "sp": {"name_en": "VERIFY", "title": "IPS"},
-    },
-    "400601": {
-        "mp": {"name_en": "VERIFY", "constituency_en": "Thane", "party": "VERIFY"},
-        "collector": {"name_en": "VERIFY", "title": "IAS"},
-        "sp": {"name_en": "VERIFY", "title": "IPS"},
-    },
-    "421201": {
-        "mp": {"name_en": "VERIFY", "constituency_en": "Kalyan", "party": "VERIFY"},
-        "collector": {"name_en": "VERIFY", "title": "IAS"},
-        "sp": {"name_en": "VERIFY", "title": "IPS"},
-    },
+    # "421503": {
+    #     "mp": {"name_en": "...", "constituency_en": "Kalyan", "party": "..."},
+    #     "collector": {"name_en": "...", "title": "IAS"},
+    #     "sp": {"name_en": "...", "title": "IPS"},
+    # },
 }
 
 
@@ -85,7 +117,24 @@ def load_mla_lookup():
     return lookup
 
 
+def check_for_duplicate_pincodes():
+    """Defensive check: Python dicts silently drop duplicate keys, which
+    caused a real bug earlier (400607 and 421201 each appeared twice and
+    silently overwrote each other). This re-parses the source as a list
+    of pairs to catch that mistake before it happens again."""
+    import re
+    seen = []
+    duplicates = []
+    for pincode in PINCODE_TO_CONSTITUENCY.keys():
+        if pincode in seen:
+            duplicates.append(pincode)
+        seen.append(pincode)
+    if duplicates:
+        raise ValueError(f"Duplicate pincode keys found: {duplicates}. Fix PINCODE_TO_CONSTITUENCY before running.")
+
+
 def build_data_json():
+    check_for_duplicate_pincodes()
     mla_lookup = load_mla_lookup()
 
     output = {
@@ -132,7 +181,8 @@ def build_data_json():
         json.dump(output, f, ensure_ascii=False, indent=2)
 
     print(f"\nDone. Wrote {len(output['pincodes'])} pincode entries to {OUTPUT_FILE}")
-    print("Remember: MP, Collector, and SP fields still say 'VERIFY' -- replace with real verified data.")
+    print("MLA data is real (from PRS). MP, Collector, and SP data still needs to be")
+    print("added manually in MANUAL_MP_AND_OFFICIALS -- currently empty for all pincodes.")
 
 
 if __name__ == "__main__":
