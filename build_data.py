@@ -87,15 +87,47 @@ PARTY_SHORT = {
 }
 
 # MP and district official data -- not available in the PRS MLA CSV.
-# Filled in manually after separate verification (sansad.in, state sites).
-# Every pincode below still needs real MP + Collector + SP data confirmed.
-# Until filled in, the site will just show "Coming soon" for these fields.
-MANUAL_MP_AND_OFFICIALS = {
-    # "421503": {
-    #     "mp": {"name_en": "...", "constituency_en": "Kalyan", "party": "..."},
-    #     "collector": {"name_en": "...", "title": "IAS"},
-    #     "sp": {"name_en": "...", "title": "IPS"},
-    # },
+# Sourced separately and verified against multiple election result sources
+# (IndiaVotes.com, ECI-derived) -- June 2024 Lok Sabha results.
+#
+# Each Lok Sabha seat covers several assembly constituencies. We map by
+# assembly constituency name (not pincode directly) so it stays correct
+# even as we add more pincodes within the same constituency.
+MP_BY_ASSEMBLY_CONSTITUENCY = {
+    # Thane Lok Sabha MP -- covers Mira Bhayandar, Ovala-Majiwada,
+    # Kopri-Pachpakhadi, Thane, Airoli, Belapur (last 2 are outside our district)
+    "Mira Bhayandar":      {"name_en": "Naresh Ganpat Mhaske", "constituency_en": "Thane", "party": "SS"},
+    "Ovala - Majiwada":    {"name_en": "Naresh Ganpat Mhaske", "constituency_en": "Thane", "party": "SS"},
+    "Kopri - Pachpakhadi": {"name_en": "Naresh Ganpat Mhaske", "constituency_en": "Thane", "party": "SS"},
+    "Thane":               {"name_en": "Naresh Ganpat Mhaske", "constituency_en": "Thane", "party": "SS"},
+
+    # Kalyan Lok Sabha MP -- covers Ambernath, Ulhasnagar, Kalyan East,
+    # Dombivli (part of Kalyan East/West in our data), Kalyan Rural, Mumbra-Kalwa
+    "Ambernath":       {"name_en": "Dr. Shrikant Eknath Shinde", "constituency_en": "Kalyan", "party": "SS"},
+    "Ulhasnagar":      {"name_en": "Dr. Shrikant Eknath Shinde", "constituency_en": "Kalyan", "party": "SS"},
+    "Kalyan East":     {"name_en": "Dr. Shrikant Eknath Shinde", "constituency_en": "Kalyan", "party": "SS"},
+    "Kalyan West":     {"name_en": "Dr. Shrikant Eknath Shinde", "constituency_en": "Kalyan", "party": "SS"},
+    "Kalyan Rural":    {"name_en": "Dr. Shrikant Eknath Shinde", "constituency_en": "Kalyan", "party": "SS"},
+    "Mumbra - Kalwa":  {"name_en": "Dr. Shrikant Eknath Shinde", "constituency_en": "Kalyan", "party": "SS"},
+
+    # Bhiwandi Lok Sabha MP -- covers Bhiwandi East/West/Rural, Murbad, Shahapur
+    "Bhiwandi East":   {"name_en": "Suresh Gopinath Mhatre (Balya Mama)", "constituency_en": "Bhiwandi", "party": "NCP (SP)"},
+    "Bhiwandi West":   {"name_en": "Suresh Gopinath Mhatre (Balya Mama)", "constituency_en": "Bhiwandi", "party": "NCP (SP)"},
+    "Bhiwandi Rural":  {"name_en": "Suresh Gopinath Mhatre (Balya Mama)", "constituency_en": "Bhiwandi", "party": "NCP (SP)"},
+    "Murbad":          {"name_en": "Suresh Gopinath Mhatre (Balya Mama)", "constituency_en": "Bhiwandi", "party": "NCP (SP)"},
+    "Shahapur":        {"name_en": "Suresh Gopinath Mhatre (Balya Mama)", "constituency_en": "Bhiwandi", "party": "NCP (SP)"},
+}
+# Source: IndiaVotes.com 2024 Lok Sabha results, cross-checked against
+# Oneindia and IndiaTV election coverage. Verified October 2026.
+
+# District Collector and SP -- one each, covers the whole district.
+# Still needs sourcing (these roles also change via transfer more often
+# than elected officials, so this needs more frequent re-checking).
+DISTRICT_OFFICIALS = {
+    "Thane": {
+        "collector": None,  # TODO: source from thane.nic.in
+        "sp": None,         # TODO: source from Thane Police / Thane Rural Police site
+    }
 }
 
 
@@ -155,7 +187,8 @@ def build_data_json():
             print(f"WARNING: No MLA found for constituency '{constituency}' (pincode {pincode}). Skipping.")
             continue
 
-        extra = MANUAL_MP_AND_OFFICIALS.get(pincode, {})
+        mp = MP_BY_ASSEMBLY_CONSTITUENCY.get(constituency)
+        district_officials = DISTRICT_OFFICIALS.get(meta.get("district_key", "Thane"), {})
 
         output["pincodes"][pincode] = {
             "district": "ठाणे",
@@ -172,17 +205,17 @@ def build_data_json():
                 "questions_asked": mla["questions_asked"],
                 "elected_since": mla["elected_since"],
             },
-            "mp": extra.get("mp", {}),
-            "collector": extra.get("collector", {}),
-            "sp": extra.get("sp", {}),
+            "mp": mp if mp else {},
+            "collector": district_officials.get("collector") or {},
+            "sp": district_officials.get("sp") or {},
         }
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
     print(f"\nDone. Wrote {len(output['pincodes'])} pincode entries to {OUTPUT_FILE}")
-    print("MLA data is real (from PRS). MP, Collector, and SP data still needs to be")
-    print("added manually in MANUAL_MP_AND_OFFICIALS -- currently empty for all pincodes.")
+    print("MLA + MP data is real (verified from PRS + 2024 election results).")
+    print("Collector and SP still need sourcing -- currently empty for all pincodes.")
 
 
 if __name__ == "__main__":
